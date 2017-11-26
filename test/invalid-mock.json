@@ -1,0 +1,5 @@
+{
+  "name": "John",
+  "invalidField": "",
+  "maliciousField": "<?php><php>"
+}
