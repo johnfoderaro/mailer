@@ -37,16 +37,27 @@ describe('validator', () => {
         fail: 'Oh no! Something went wrong. Try again later.',
       },
     };
-    const request = {
+    const request01 = {
       method: 'POST',
       body: JSON.stringify({
         name: '<html>true</html>',
-        randomProp: '',
+        topic: '',
+        email: '',
+        comment: 'test',
+      }),
+      url: '/submit/',
+    };
+    const request02 = {
+      method: 'POST',
+      body: JSON.stringify({
+        name: '<html>true</html>',
+        randomInputField: '12345',
         email: 'test',
         comment: 'test',
       }),
       url: '/submit/',
     };
-    assert.fail(validator(options, request));
+    assert.ok(!validator(options, request01));
+    assert.ok(!validator(options, request02));
   });
 });
