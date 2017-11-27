@@ -8,9 +8,8 @@ const post = require('./post');
 describe('server', () => {
   it('should return an instance of the http.Server object', () => {
     const data = JSON.parse(fs.readFileSync('./test/valid-mock.json'));
-    post({ data, port: 3001, endPoint: '/build/' });
-    const mailer = server({
-      port: 3000,
+    const options = {
+      port: 3001,
       endPoint: '/submit/',
       honeypot: 'topic',
       input: ['topic', 'name', 'email', 'comment'],
@@ -28,8 +27,13 @@ describe('server', () => {
           pass: 'config.password',
         },
       },
+    };
+    post({ data, port: 3001, path: '/submit/' });
+    const mailer = server(options, (response) => {
+      assert.ok(mailer instanceof http.Server);
+      console.log(response);
+      mailer.close();
     });
-    assert.ok(mailer instanceof http.Server);
   });
 });
 

@@ -1,10 +1,10 @@
 const http = require('http');
 
 function post(options) {
-  const { data } = options;
+  const { data, port, path } = options;
   const request = http.request({
-    port: options.port,
-    path: options.path,
+    port,
+    path,
     method: 'POST',
     host: '127.0.0.1',
     headers: {
