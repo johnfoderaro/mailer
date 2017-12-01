@@ -27,27 +27,39 @@ describe('validator', () => {
     assert.ok(validator(options, request, data));
   });
   it('should return false if input array fields do not match body properties', () => {
-    const data01 = {
-      name: '<html>true</html>',
-      topic: '',
-      email: '',
-      comment: 'test',
-    };
-    const data02 = {
-      name: '<html>true</html>',
-      randomInputField: '12345',
-      email: 'test',
-      comment: 'test',
-    };
-    const request01 = {
-      method: 'POST',
-      url: '/submit/',
-    };
-    const request02 = {
-      method: 'POST',
-      url: '/submit/',
-    };
-    assert.ok(!validator(options, request01, data01));
-    assert.ok(!validator(options, request02, data02));
+    const inputData = [{
+      data: {
+        name: '<html>true</html>',
+        topic: '',
+        email: '',
+        comment: 'test',
+      },
+      request: {
+        method: 'POST',
+        url: '/submit/',
+      },
+    }, {
+      data: {
+        name: '<html>true</html>',
+        randomInputField: '12345',
+        email: 'test',
+        comment: 'test',
+      },
+      request: {
+        method: 'POST',
+        url: '/wrong-end-point/',
+      },
+    }];
+    function thrower(array) {
+      array.forEach((item) => {
+        const { request, data } = item;
+        assert.throws(() => {
+          if (validator(options, request, data) instanceof Error) {
+            throw new Error();
+          }
+        }, Error);
+      });
+    }
+    thrower(inputData);
   });
 });

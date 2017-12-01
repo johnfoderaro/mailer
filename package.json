@@ -15,5 +15,8 @@
     "eslint-plugin-import": "^2.8.0",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "nodemailer": "^4.4.0"
   }
 }
