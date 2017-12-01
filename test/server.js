@@ -17,20 +17,18 @@ describe('server', () => {
       fail: '',
     },
     mailer: {
-      settings: {
-        aliases: ['Me', 'Mac'],
-        auth: {
-          user: 'config.icloud',
-          pass: 'config.password',
-        },
-        domains: ['me.com', 'mac.com'],
-        port: 587,
-        secure: true,
-      },
-      message: {
-        to: '',
-        from: '',
-        host: 'smtp.mail.me.com',
+      // TODO option for text or html
+      to: '',
+      from: '',
+      subject: '',
+      aliases: ['Me', 'Mac'],
+      domains: ['me.com', 'mac.com'],
+      host: '',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'config.icloud',
+        pass: 'config.password',
       },
     },
   };

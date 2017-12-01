@@ -1,6 +1,6 @@
 {
-  "topic": "",
+  "topic": "", // honeypot field
   "name": "John Foderaro",
-  "email": "johnfoderaro@icloud.com",
+  "email": "john@foderaro.com",
   "comment": "This is a cool website bro."
 }
