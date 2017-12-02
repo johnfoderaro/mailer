@@ -53,11 +53,7 @@ describe('validator', () => {
     function thrower(array) {
       array.forEach((item) => {
         const { request, data } = item;
-        assert.throws(() => {
-          if (validator(options, request, data) instanceof Error) {
-            throw new Error();
-          }
-        }, Error);
+        assert.throws(() => validator(options, request, data), Error);
       });
     }
     thrower(inputData);
