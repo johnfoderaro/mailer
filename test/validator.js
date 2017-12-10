@@ -1,18 +1,9 @@
 const assert = require('assert');
 
 const validator = require('./../lib/validator');
+const options = require('./options');
 
 describe('validator', () => {
-  const options = {
-    port: 3000,
-    endPoint: '/submit/',
-    honeypot: 'topic',
-    input: ['name', 'topic', 'email', 'comment'],
-    message: {
-      success: 'Success! I will be in touch soon.',
-      fail: 'Oh no! Something went wrong. Try again later.',
-    },
-  };
   it('should return true if input array fields match body properties', () => {
     const data = {
       name: '<html>true</html>',

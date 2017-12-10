@@ -4,34 +4,10 @@ const http = require('http');
 
 const post = require('./post');
 const server = require('./../lib/server');
-const keys = require('./../keys');
 
-const { user, pass, email } = keys;
+const options = require('./options');
 
 describe('server', () => {
-  const options = {
-    port: 3001,
-    endPoint: '/submit/',
-    honeypot: 'topic',
-    // TODO rename input to content? fields?
-    input: ['topic', 'name', 'email', 'comment'],
-    message: {
-      success: '',
-      fail: '',
-    },
-    mailer: {
-      // TODO option for text or html
-      to: email,
-      from: email,
-      subject: 'New Form Submission',
-      aliases: ['Me', 'Mac'],
-      domains: ['me.com', 'mac.com'],
-      host: '',
-      port: 587,
-      secure: false,
-      auth: { user, pass },
-    },
-  };
   it('should return an instance of the http.Server object', () => {
     /**
      * we assign the server function to a constant
